@@ -102,3 +102,25 @@ def map_to_coarse_category(category, coarse_category_mapping):
     return 'UNKNOWN'
 
 
+def extract_city_from_store(store_name):
+    """
+    Extracts city name from store name that follows pattern 'STORE NAME / CITY'
+    
+    Parameters:
+    -----------
+    store_name : str
+        The store name potentially containing city information
+        
+    Returns:
+    --------
+    str or None
+        Extracted city name if found, None otherwise
+    """
+    if pd.isna(store_name):
+        return None
+    parts = store_name.split('/')
+    if len(parts) > 1:
+        return parts[-1].strip()
+    return None
+
+
